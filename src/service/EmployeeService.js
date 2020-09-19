@@ -1,5 +1,6 @@
 'use strict';
-
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
 
 /**
  * Add a new employee detail
@@ -18,6 +19,25 @@
  **/
 exports.addEmployee = function(empId,empName,empAccount,email,empAddress,manager,contact,team,organisation) {
   return new Promise(function(resolve, reject) {
+    
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("EmployeeEngagement");
+      var Employee = [
+        { EmpId: `${empId}`, EmpName: `${empName}`, EmpAddress: `${empAddress}`, EmpAccount: `${empAccount}`, Email:`${email}`, Manager: `${manager}`, ManagerEmail:`${empId}`,Contact: `${contact}`, Team: `${team}`, Organization: `${organisation}`}
+      ];
+
+      dbo.collection("EmployeeNew").insertMany(Employee, function(err, res) {
+        if (err) throw reject(err);
+        else {
+          let response = {
+            "payload": "Number of documents inserted: " + res.insertedCount
+          }
+          resolve(response);
+        }
+        db.close();
+      });
+    });
     resolve();
   });
 }
@@ -43,32 +63,3 @@ exports.updateEmployee = function(empId,empName,empAddress,empAccount,email,mana
     resolve();
   });
 }
-
-// var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   var dbo = db.db("EmployeeEngagement");
-
-//   var Appreciation = [
-//     { EmpId: '2370004', Appreciation_Description: '', Wishes: '', Gift: '', ManagerComment:''},
-//     { EmpId: '2361353', Appreciation_Description: '', Wishes: '', Gift: '', ManagerComment:''},
-//   ];
-// //   var Employees = [
-// //     { EmpId: '2370004', EmpName: 'Ashish Mehta', EmpAddress: 'Delhi', EmpAccount: 'FRB', Email:'ashish.mehta@mphasis.com', Manager: 'Brijesh Tiwari', ManagerEmail:'brijesh.t@mphasis.com',Contact: '9028596846', Team: 'Digital Technology', Organization: 'Mphasis'},
-// //     { EmpId: '2361353', EmpName: 'Rohit Jaiswal', EmpAddress: 'Delhi', EmpAccount: 'FRB', Email:'rohit.jaiswal@mphasis.com', Manager: 'Brijesh Tiwari', ManagerEmail:'brijesh.t@mphasis.com', Contact: '7073723149', Team: 'Digital Technology', Organization: 'Mphasis'},
-// //   ];
-//    dbo.collection("Appreciation").find({}).toArray(function(err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//     db.close();
-//    });
-//   dbo.collection("Appreciation").insertMany(Appreciation, function(err, res) {
-//     if (err) throw err;
-//     console.log("Number of documents inserted: " + res.insertedCount);
-//     db.close();
-//   });
-// });
-
-
-
