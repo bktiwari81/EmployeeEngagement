@@ -21,7 +21,6 @@ tags:
 - name: "Notify"
   description: "Operations about user"
 schemes:
-- "https"
 - "http"
 paths:
   /employee:

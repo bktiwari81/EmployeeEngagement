@@ -4,8 +4,7 @@
   "description": "Employee Engagement  api to service employee details and send notification to the employee",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
+    "start": "node src/app"
   },
   "keywords": [
     "swagger"
@@ -15,6 +14,9 @@
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
+    "mongodb": "^3.6.2",
+    "nodemailer": "^6.4.11",
+    "nodemon": "^2.0.4",
     "swagger-tools": "0.10.1"
   }
 }
