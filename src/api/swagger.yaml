@@ -1,0 +1,197 @@
+---
+swagger: "2.0"
+info:
+  description: "Employee Engagement  api to service employee details and send notification\
+    \ to the employee"
+  version: "1.0.0"
+  title: "Employee Engagement"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "brijesh.t@mphasis.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/employeeEngagement/v1"
+tags:
+- name: "Employee"
+  description: "Everything about your Employee"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "Notify"
+  description: "Operations about user"
+schemes:
+- "https"
+- "http"
+paths:
+  /employee:
+    post:
+      tags:
+      - "Employee"
+      summary: "Add a new employee detail"
+      description: ""
+      operationId: "addEmployee"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "EmpId"
+        in: "header"
+        description: "Employee id of  employee"
+        required: true
+        type: "integer"
+      - name: "EmpName"
+        in: "header"
+        description: "Employee Name  of  employee"
+        required: true
+        type: "integer"
+      - name: "EmpAddress"
+        in: "header"
+        description: "Employee address  of  employee"
+        required: false
+        type: "string"
+      - name: "EmpAccount"
+        in: "header"
+        description: "Employee account  of  employee"
+        required: true
+        type: "string"
+      - name: "Email"
+        in: "header"
+        description: "Employee email  of  employee"
+        required: true
+        type: "string"
+      - name: "Manager"
+        in: "header"
+        description: "Employee manager  of  employee"
+        required: false
+        type: "string"
+      - name: "Contact"
+        in: "header"
+        description: "Employee contact  of  employee"
+        required: false
+        type: "integer"
+      - name: "Team"
+        in: "header"
+        description: "Employee team  of  employee"
+        required: false
+        type: "string"
+      - name: "Organisation"
+        in: "header"
+        description: "Employee organisation  of  employee"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Employee"
+    put:
+      tags:
+      - "Employee"
+      summary: "Update an Employee"
+      description: ""
+      operationId: "updateEmployee"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "EmpId"
+        in: "header"
+        description: "Employee id of  employee"
+        required: true
+        type: "integer"
+      - name: "EmpName"
+        in: "header"
+        description: "Employee Name  of  employee"
+        required: false
+        type: "integer"
+      - name: "EmpAddress"
+        in: "header"
+        description: "Employee address  of  employee"
+        required: false
+        type: "string"
+      - name: "EmpAccount"
+        in: "header"
+        description: "Employee account  of  employee"
+        required: false
+        type: "string"
+      - name: "Email"
+        in: "header"
+        description: "Employee email  of  employee"
+        required: false
+        type: "string"
+      - name: "Manager"
+        in: "header"
+        description: "Employee manager  of  employee"
+        required: false
+        type: "string"
+      - name: "Contact"
+        in: "header"
+        description: "Employee contact  of  employee"
+        required: false
+        type: "integer"
+      - name: "Team"
+        in: "header"
+        description: "Employee team  of  employee"
+        required: false
+        type: "string"
+      - name: "Organisation"
+        in: "header"
+        description: "Employee organisation  of  employee"
+        required: false
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "employee not found"
+        "405":
+          description: "Validation exception"
+      x-swagger-router-controller: "Employee"
+  /notify:
+    post:
+      tags:
+      - "Notify"
+      summary: "Send notification to  user"
+      description: "This can only be done by the logged in user."
+      operationId: "notify"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "EmpId"
+        in: "header"
+        description: "Employee id of  employee"
+        required: true
+        type: "integer"
+      - name: "Wishes"
+        in: "header"
+        description: "Send Wish to employee"
+        required: false
+        type: "string"
+      - name: "Gift"
+        in: "header"
+        description: "Send gift to  employee"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "AppreciationDescription"
+        description: "Appreciation description of employee"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "Notify"
+definitions: {}
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
