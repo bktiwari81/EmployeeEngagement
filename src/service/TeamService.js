@@ -27,21 +27,21 @@ Object.keys(teams).forEach(team => {
         let percentile= parseInt((countter/teams[team])*100)
         if(countter >= 50){
             responseJson.push({
-              Team: team,
-              Color: 'Green',
+              text: team,
+              color: 'Green',
               Percentile: percentile
             })
         }
          else if(countter >= 30 && countter < 50){
             responseJson.push({
-              Team: team,
-              Color: 'Yellow',
+              team: team,
+              color: 'Yellow',
               Percentile: percentile
             })
         } else {
             responseJson.push({
-              Team: team,
-              Color: 'Red',
+              team: team,
+              color: 'Red',
               Percentile: percentile
             })
         }
