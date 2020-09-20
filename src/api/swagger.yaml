@@ -195,6 +195,20 @@ paths:
         default:
           description: "successful operation"
       x-swagger-router-controller: "Notify"
+  /teamFlagging:
+    post:
+      tags:
+      - "Team"
+      summary: "Set Flagging for Team Level appriciation"
+      description: "Set Flagging for Team  Appriaciation "
+      operationId: "teamFlagging"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "TeamFlagging"      
 definitions: {}
 externalDocs:
   description: "Find out more about Swagger"
