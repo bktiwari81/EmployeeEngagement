@@ -46,7 +46,7 @@ paths:
         in: "header"
         description: "Employee Name  of  employee"
         required: true
-        type: "integer"
+        type: "string"
       - name: "EmpAddress"
         in: "header"
         description: "Employee address  of  employee"
@@ -65,6 +65,11 @@ paths:
       - name: "Manager"
         in: "header"
         description: "Employee manager  of  employee"
+        required: false
+        type: "string"
+      - name: "ManagerEmail"
+        in: "header"
+        description: "emailof  manager  "
         required: false
         type: "string"
       - name: "Contact"

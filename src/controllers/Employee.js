@@ -10,10 +10,11 @@ module.exports.addEmployee = function addEmployee (req, res, next) {
   var email = req.swagger.params['Email'].value;
   var empAddress = req.swagger.params['EmpAddress'].value;
   var manager = req.swagger.params['Manager'].value;
+  var managerEmail = req.swagger.params['ManagerEmail'].value;
   var contact = req.swagger.params['Contact'].value;
   var team = req.swagger.params['Team'].value;
   var organisation = req.swagger.params['Organisation'].value;
-  Employee.addEmployee(empId,empName,empAccount,email,empAddress,manager,contact,team,organisation)
+  Employee.addEmployee(empId,empName,empAccount,email,empAddress,manager,managerEmail,contact,team,organisation)
     .then(function (response) {
       utils.writeJson(res, response);
     })

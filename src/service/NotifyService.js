@@ -26,7 +26,7 @@ exports.notify = function(empId,wishes,gift,appreciationDescription) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("EmployeeEngagement");
-        dbo.collection("EmployeeNew").find({"EmpId":'2370004'}).toArray(function(err, result) {
+        dbo.collection("EmployeeNew").find({"EmpId":`${empId}`}).toArray(function(err, result) {
           if (err) throw err;
           console.log(result);
           var mailOptions = {
