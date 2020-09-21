@@ -42,6 +42,18 @@ exports.addEmployee = function(empId,empName,empAccount,email,empAddress,manager
   });
 }
 
+/**
+ * Employee daily status record
+ * Set Flagging for Team  Appriaciation 
+ *
+ * no response value expected for this operation
+ **/
+exports.employeeStatus = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
 
 /**
  * Update an Employee
