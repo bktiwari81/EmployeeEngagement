@@ -50,6 +50,36 @@ exports.addEmployee = function(empId,empName,empAccount,email,empAddress,manager
  **/
 exports.employeeStatus = function() {
   return new Promise(function(resolve, reject) {
+     var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
+ 
+ MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("EmployeeEngagement");
+      var DailyStatus = [
+        { 
+           "Do you know what is expected today": "true",
+          "Do you have skills to do your job": "false",
+          "Did you get help when needed": "true",
+          "Did you learn something": "true",
+          "Did you feel appreciated": "true",
+          "employeeID": "2335088"
+        }
+      ];
+      //  dbo.collection("DailyStatus").find({}).toArray(function(err, result) {
+      //     if (err) throw err;
+      //     console.log(result);
+      dbo.collection("DailyStatus").insertMany(DailyStatus, function(err, res) {
+        if (err) throw reject(err);
+        else {
+           let response = {
+            "payload": "Number of documents inserted: " + res.insertedCount
+          }
+          resolve(response);
+        }
+          db.close();
+      });
+    });
     resolve();
   });
 }
