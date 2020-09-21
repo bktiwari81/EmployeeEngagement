@@ -179,10 +179,22 @@ paths:
       produces:
       - "application/xml"
       - "application/json"
+      parameters:
+      - name: "EmpId"
+        in: "header"
+        description: "Employee id of  employee"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "EmployeeStatusCheck"
+        description: "Check status of employee"
+        required: false
+        schema:
+          type: "object"
       responses:
         default:
           description: "successful operation"
-      x-swagger-router-controller: "EmployeeStatus" 
+      x-swagger-router-controller: "Employee" 
   /notify:
     post:
       tags:

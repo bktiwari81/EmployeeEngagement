@@ -48,11 +48,10 @@ exports.addEmployee = function(empId,empName,empAccount,email,empAddress,manager
  *
  * no response value expected for this operation
  **/
-exports.employeeStatus = function() {
+exports.employeeStatus = function(empId,employeeStatusCheck) {
   return new Promise(function(resolve, reject) {
      var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
- 
  MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("EmployeeEngagement");
