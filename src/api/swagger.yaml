@@ -169,6 +169,20 @@ paths:
         "405":
           description: "Validation exception"
       x-swagger-router-controller: "Employee"
+  /employeeStatus: 
+    post:
+      tags:
+      - "Employee"
+      summary: "Recoding employee daily status record"
+      description: "Set Flagging for Team  Appriaciation "
+      operationId: "employeeStatus"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "EmployeeStatus" 
   /notify:
     post:
       tags:
