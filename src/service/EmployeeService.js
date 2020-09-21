@@ -50,24 +50,23 @@ exports.addEmployee = function(empId,empName,empAccount,email,empAddress,manager
  **/
 exports.employeeStatus = function(empId,employeeStatusCheck) {
   return new Promise(function(resolve, reject) {
-     var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
- MongoClient.connect(url, function(err, db) {
+    let statusCheck = JSON.parse(employeeStatusCheck)
+    var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.mongodb.net/"
+    MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("EmployeeEngagement");
       var DailyStatus = [
         { 
-           "Do you know what is expected today": "true",
-          "Do you have skills to do your job": "false",
-          "Did you get help when needed": "true",
-          "Did you learn something": "true",
-          "Did you feel appreciated": "true",
-          "employeeID": "2335088"
+          "Do you know what is expected today": statusCheck["Do you know what is expected today"],
+          "Do you have skills to do your job": statusCheck["Do you have skills to do your job"],
+          "Did you get help when needed": statusCheck["Did you get help when needed"],
+          "Did you learn something": statusCheck["Did you learn something"],
+          "Did you feel appreciated": statusCheck["Did you feel appreciated"],
+          "empId": empId,
+          "dateTime": new Date()
         }
       ];
-      //  dbo.collection("DailyStatus").find({}).toArray(function(err, result) {
-      //     if (err) throw err;
-      //     console.log(result);
       dbo.collection("DailyStatus").insertMany(DailyStatus, function(err, res) {
         if (err) throw reject(err);
         else {
@@ -79,7 +78,6 @@ var url = "mongodb+srv://EmployeeEngagement:Hackathon2020@cluster0.2txht.azure.m
           db.close();
       });
     });
-    resolve();
   });
 }
 

@@ -176,8 +176,9 @@ paths:
       summary: "Recoding employee daily status record"
       description: "Set Flagging for Team  Appriaciation "
       operationId: "employeeStatus"
+      consumes:
+      - "application/json"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "EmpId"
@@ -190,7 +191,7 @@ paths:
         description: "Check status of employee"
         required: false
         schema:
-          type: "object"
+          type: "string"
       responses:
         default:
           description: "successful operation"
