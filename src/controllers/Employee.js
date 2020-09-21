@@ -23,6 +23,16 @@ module.exports.addEmployee = function addEmployee (req, res, next) {
     });
 };
 
+module.exports.employeeStatus = function employeeStatus (req, res, next) {
+  Employee.employeeStatus()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.updateEmployee = function updateEmployee (req, res, next) {
   var empId = req.swagger.params['EmpId'].value;
   var empName = req.swagger.params['EmpName'].value;
