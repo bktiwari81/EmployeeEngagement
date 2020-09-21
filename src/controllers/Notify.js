@@ -10,6 +10,7 @@ module.exports.notify = function notify (req, res, next) {
   var appreciationDescription = req.swagger.params['AppreciationDescription'].value;
   Notify.notify(empId,wishes,gift,appreciationDescription)
     .then(function (response) {
+      res.setHeader("access-control-allow-origin","*");
       utils.writeJson(res, response);
     })
     .catch(function (response) {

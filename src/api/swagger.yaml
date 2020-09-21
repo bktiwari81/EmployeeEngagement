@@ -90,6 +90,16 @@ paths:
       responses:
         "200":
           description: "successful operation"
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Methods:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Origin:
+              type: "string"
+              default: "*"
         "405":
           description: "Invalid input"
       x-swagger-router-controller: "Employee"
@@ -196,7 +206,7 @@ paths:
           description: "successful operation"
       x-swagger-router-controller: "Notify"
   /teamFlagging:
-    post:
+    get:
       tags:
       - "Team"
       summary: "Set Flagging for Team Level appriciation"
@@ -208,7 +218,7 @@ paths:
       responses:
         default:
           description: "successful operation"
-      x-swagger-router-controller: "TeamFlagging"      
+      x-swagger-router-controller: "Team"      
 definitions: {}
 externalDocs:
   description: "Find out more about Swagger"
