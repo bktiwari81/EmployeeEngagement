@@ -24,7 +24,7 @@ schemes:
 - "http"
 paths:
   /employee:
-    post:
+    get:
       tags:
       - "Employee"
       summary: "Add a new employee detail"
@@ -170,7 +170,7 @@ paths:
           description: "Validation exception"
       x-swagger-router-controller: "Employee"
   /employeeStatus: 
-    post:
+    get:
       tags:
       - "Employee"
       summary: "Recoding employee daily status record"
@@ -186,12 +186,11 @@ paths:
         description: "Employee id of  employee"
         required: true
         type: "integer"
-      - in: "body"
+      - in: "query"
         name: "EmployeeStatusCheck"
         description: "Check status of employee"
         required: false
-        schema:
-          type: "string"
+        type: "string"
       responses:
         "200":
           description: "successful operation"
@@ -209,7 +208,7 @@ paths:
           description: "Invalid input"
       x-swagger-router-controller: "Employee" 
   /notify:
-    post:
+    get:
       tags:
       - "Notify"
       summary: "Send notification to  user"
