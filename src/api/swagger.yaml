@@ -193,8 +193,20 @@ paths:
         schema:
           type: "string"
       responses:
-        default:
+        "200":
           description: "successful operation"
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Methods:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Origin:
+              type: "string"
+              default: "*"
+        "405":
+          description: "Invalid input"
       x-swagger-router-controller: "Employee" 
   /notify:
     post:
@@ -229,8 +241,20 @@ paths:
         schema:
           type: "string"
       responses:
-        default:
+        "200":
           description: "successful operation"
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Methods:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Origin:
+              type: "string"
+              default: "*"
+        "405":
+          description: "Invalid input"
       x-swagger-router-controller: "Notify"
   /teamFlagging:
     get:
@@ -243,8 +267,20 @@ paths:
       - "application/xml"
       - "application/json"
       responses:
-        default:
+        "200":
           description: "successful operation"
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Methods:
+              type: "string"
+              default: "*"
+            Access-Control-Allow-Origin:
+              type: "string"
+              default: "*"
+        "405":
+          description: "Invalid input"
       x-swagger-router-controller: "Team"      
 definitions: {}
 externalDocs:
