@@ -186,7 +186,7 @@ paths:
         description: "Employee id of  employee"
         required: true
         type: "integer"
-      - in: "query"
+      - in: "header"
         name: "EmployeeStatusCheck"
         description: "Check status of employee"
         required: false
@@ -233,7 +233,7 @@ paths:
         description: "Send gift to  employee"
         required: false
         type: "string"
-      - in: "query"
+      - in: "header"
         name: "AppreciationDescription"
         description: "Appreciation description of employee"
         required: false
