@@ -237,8 +237,7 @@ paths:
         name: "AppreciationDescription"
         description: "Appreciation description of employee"
         required: false
-        schema:
-          type: "string"
+        type: "string"
       responses:
         "200":
           description: "successful operation"
